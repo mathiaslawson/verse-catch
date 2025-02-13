@@ -7,7 +7,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.NODE_ENV === 'production' ? process.env.NEXT_SOCKET_PROD_URL : "http://localhost:300",
     methods: ["GET", "POST"],
   },
 });
