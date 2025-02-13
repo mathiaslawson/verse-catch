@@ -7,15 +7,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway({
-  cors: {
-    origin:
-      process.env.NODE_ENV === 'production'
-        ? process.env.NEXT_SOCKET_PROD_URL
-        : 'http://localhost:3000',
-    methods: ['GET', 'POST'],
-  },
-})
+@WebSocketGateway({ transports: ['websocket'], cors: { origin: '*' } })
 export class WebsocketGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
