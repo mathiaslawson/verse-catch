@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mic, MicOff } from 'lucide-react';
 import { io, Socket } from 'socket.io-client';
 
-const SOCKET_SERVER_URL = 'http://localhost:3001';
+const SOCKET_SERVER_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_SOCKET_PROD_URL : "http://localhost:3001";
 
 const AudioStreamer = () => {
   const [isRecording, setIsRecording] = useState(false);
